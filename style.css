@@ -1,0 +1,22 @@
+/* CSS Document */
+
+#box {
+	display: flex;
+	align-content: center;
+}
+
+#cup {
+	width: 100vw;
+	height: 250vw;
+	background-image: url(2017.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+
+#logo {
+	height: 10vh;
+	width: 25vh;
+	background-image: url(logo.svg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
