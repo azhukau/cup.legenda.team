@@ -1,8 +1,20 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
+import 'package:html/parser.dart';
+import 'package:html/dom.dart';
+import 'package:html/parser_console.dart';
 
 Future main() async {
+
+  useConsole();
+
+  File file = new File("../index.html");
+  RandomAccessFile handler = file.openSync(mode : FileMode.APPEND);
+
+  Document doc = parse(handler);
+  
+  Element el = doc.querySelector("#entries");
 
   var server = await HttpServer.bind(
     InternetAddress.ANY_IP_V4,
@@ -33,6 +45,11 @@ Future main() async {
               <td></td>
             </tr>
         """;
+
+      el.innerHtml += r;
+
+      handler.writeStringSync(doc.toString());
+
       resp
       ..write(r)
       ..close();
