@@ -13,7 +13,7 @@ Future main() async {
 
     final HttpResponse resp = req.response;
 
-    final HtmlEscape esc = HtmlEscape();
+    final HtmlEscape esc = new HtmlEscape();
 
     final String last_name = esc.convert(req.uri.queryParameters['last']);
     final String first_name = esc.convert(req.uri.queryParameters['first']);
