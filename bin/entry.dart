@@ -13,12 +13,14 @@ Future main() async {
 
     final HttpResponse resp = req.response;
 
-    final String last_name = HtmlEscape().convert(req.uri.queryParameters['last']);
-    final String first_name = HtmlEscape().convert(req.uri.queryParameters['first']);
-    final String year = HtmlEscape().convert(req.uri.queryParameters['year']);
-    final String team = HtmlEscape().convert(req.uri.queryParameters['team']);
-    final String si = HtmlEscape().convert(req.uri.queryParameters['si']);
-    final String course = HtmlEscape().convert(req.uri.queryParameters['course'].substring(0,3));
+    final HtmlEscape esc = HtmlEscape();
+
+    final String last_name = esc.convert(req.uri.queryParameters['last']);
+    final String first_name = esc.convert(req.uri.queryParameters['first']);
+    final String year = esc.convert(req.uri.queryParameters['year']);
+    final String team = esc.convert(req.uri.queryParameters['team']);
+    final String si = esc.convert(req.uri.queryParameters['si']);
+    final String course = esc.convert(req.uri.queryParameters['course'].substring(0,3));
 
     final String r = """
             <tr>
