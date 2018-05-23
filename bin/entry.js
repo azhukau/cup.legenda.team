@@ -5,7 +5,7 @@ var url = require('url');
 
 let jsdom = require('jsdom').JSDOM,
 
-uri = '../index.html',
+uri = '/var/www/cup.legenda.team/index.html',
  
 // the options that I will be giving to jsdom
 options = {
@@ -22,7 +22,7 @@ const serv = http.createServer(function (req, res) {
     var year = xssFilters.inHTMLData(q.year);
     var team = xssFilters.inHTMLData(q.team);
     var si = xssFilters.inHTMLData(q.si);
-    var course = xssFilters.inHTMLData(q.course);
+    var course = xssFilters.inHTMLData(q.course.substr(0,3));
 
     jsdom.fromFile(uri, options).then(function (dom) {
  
@@ -48,7 +48,11 @@ const serv = http.createServer(function (req, res) {
     
         fs.writeFile(uri,o,function(err) {
             if (err) return console.error(err);
-        });    
+        });
+
+        res.statusCode = 302;
+        res.setHeader('Location','https://cup.legenda.team/add.html');
+        res.end;
      
     }).catch (function (e) {
      
