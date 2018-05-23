@@ -15,9 +15,7 @@ options = {
 
 const serv = http.createServer(function (req, res) {
 
-    var parsedurl = url.parse(req.url);
-
-    console.log(parsedurl);
+    var q = url.parse(req.url, true).query;
 
     var first = xssFilters.inHTMLData(q.first);
     var last = xssFilters.inHTMLData(q.last);
