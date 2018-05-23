@@ -50,15 +50,16 @@ const serv = http.createServer(function (req, res) {
             if (err) return console.error(err);
         });
 
-        res.statusCode = 302;
-        res.setHeader('Location','https://cup.legenda.team/add.html');
-        res.end;
-     
+    
     }).catch (function (e) {
      
         console.log(e);
      
     });    
+
+    res.statusCode = 302;
+    res.setHeader('Location','https://cup.legenda.team/add.html');
+    res.end();
 
     }
 
